@@ -36,11 +36,18 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+<a href='{{ url('formbalita') }}'></a>
+</html>
 
 <body>
     @include('admin.partials.header')
 
-
+{{-- @if (session()->has('sukses'))
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{session('sukses')}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+@endif --}}
     <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
@@ -59,7 +66,7 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/formbalita">
+            <a href="formbalita/create">
               <i class="bi bi-circle"></i><span>Form Balita</span>
             </a>
           </li>
@@ -92,7 +99,7 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/tabelbalita">
+            <a href="formbalita">
               <i class="bi bi-circle"></i><span>Tabel Balita</span>
             </a>
           </li>
@@ -172,51 +179,173 @@
       </nav>
     </div><!-- End Page Title -->
 
+
     <section class="section dashboard">
       <div class="row">
 
         <!-- Left side columns -->
         <div class="col-lg-8">
           <div class="row">
-
           </div>
         </div><!-- End Left side columns -->
+
 
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Tabel Balita</h5>
               {{-- <p>Add <code>.table-bordered</code> for borders on all sides of the table and cells.</p> --}}
+              <a href="{{ url('formbalita/create') }}" class="btn btn-primary" role="button" data-bs-toggle="submit">Tambah</a>
               <!-- Bordered Table -->
-              <table class="table table-bordered">
+                <br>
                 <thead>
+                <br>
                   <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">NIK</th>
-                    <th scope="col">Jenis Kelamin</th>
-                    <th scope="col">Tanggal Lahir</th>
-                    <th scope="col">Tinggi Badan</th>
-                    <th scope="col">Berat Badan</th>
-                    <th scope="col">Alamat</th>
-                    <th scope="col">Tanggal</th>
-                    <th scope="col">Nama Ibu</th>
+                    <table class="table table-bordered">
+                    <td scope="col">Id</td>
+                    <td scope="col">Nama</td>
+                    <td scope="col">NIK</td>
+                    <td scope="col">Jenis kelamin</td>
+                    <td scope="col">Tanggal lahir</td>
+                    <td scope="col">Tinggi Badan</td>
+                    <td scope="col">Berat Badan</td>
+                    <td scope="col">Alamat</td>
+                    <td scope="col">Nama Ibu</td>
+                    <td scope="col">Tanggal</td>
+                    <td scope="col">aksi</td>
                   </tr>
                 </thead>
-                {{-- <tbody>
-                  <tr>
-                    <th scope="row">001</th>
-                    <td>Favian Hilmi</td>
-                    <td>1234567890</td>
-                    <td>Laki-Laki</td>
-                    <td>25</td>
-                    <td>24</td>
-                    <td>135</td>
-                    <td>Jln Manukan</td>
-                    <td>17-07-2022</td>
-                    <td>Endang</td>
+                     <tbody>
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach ($data as $item)
+                                    <tr>
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->Nama}}</td>
+                                        <td>{{$item->Nik}}</td>
+                                        <td>{{$item->Jeniskelamin}}</td>
+                                        <td>{{$item->Tanggallahir}}</td>
+                                        <td>{{$item->Tinggibadan}}</td>
+                                        <td>{{$item->Beratbadan}}</td>
+                                        <td>{{$item->Alamat}}</td>
+                                        <td>{{$item->Namaibu}}</td>
+                                        <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
+                                        <td>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        edit
+                                        </button>
+                                        <form class='d-inline' action="/admin/{{$item->id}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger"> delete</button>
+                                        </form>
+
+                                        </td>
+                                     <tr>
+                    <td>
+                    <!-- Button trigger modal -->
+
+                    <!-- Modal -->
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data Balita</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <form action="tabelbalita" method="post">
+                              <input type ="hidden" name="id" value="{{$item->id}}">
+                              {{ csrf_field()}}
+                              <div class="modal-body">
+                                <div class="mb-1">
+                                    <label for="recipient-name" class="col-form-label">Nama</label>
+                                    <input type="text" class="form-control" name='Nama' value="{{$item->Nama}}">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="recipient-name" class="col-form-label">NIK</label>
+                                    <input type="text" class="form-control" name='Nik' value="{{$item->Nik}}">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="Option" class="col-sm-5 col">Jenis Kelamin</label>
+                                    <div class="col-sm-10">
+
+                                    <select class="form-select" name="Jeniskelamin" aria-label="Default select example">
+                                        <option selected>{{$item->Jeniskelamin}}</option>
+                                        <option value ='laki laki'>Laki laki</option>
+                                        <option value ='perempuan'>Perempuan</option>
+                                      </select>
+                                    {{-- <label for="recipient-name" class="col-form-label">Jenis Kelamin</label>
+                                    <input type="text" class="form-control" name='Jeniskelamin' id="recipient-name"> --}}
+                                </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Tanggal Lahir</label>
+                                    <input type="date" class="form-control" name='Tanggallahir' value="{{$item->Tanggallahir}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Tinggi Badan</label>
+                                    <input type="text" class="form-control" name='Tinggibadan' value="{{$item->Tinggibadan}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Berat Badan</label>
+                                    <input type="text" class="form-control" name='Beratbadan' value="{{$item->Beratbadan}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Alamat</label>
+                                    <input type="text" class="form-control" name='Alamat' value="{{$item->Alamat}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Nama Ibu</label>
+                                    <input type="text" class="form-control" name='Namaibu' value="{{$item->Namaibu}}">
+                                </div>
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </form>
+                    </td>
+                    <td>
+
                   </tr>
+                  @endforeach
+                </tbody>
+            </section>
+
+{{--
+                <tbody>
+                @foreach($tblibu as $ti)
+                  <tr>
+                    <th scope="row"></th>
+                    <td>{{$ti->nama}}</td>
+                    <td>{{$ti->nik}}</td>
+                    <td>{{$ti->alamat}}</td>
+                    <td>{{$ti->tanggallahir}}</td>
+                    <td>{{$ti->tinggibadan}}</td>
+                    <td>{{$ti->beratbadan}}</td>
+                    <td>{{$ti->tekanandarah}}</td>
+                    <td>{{$ti->tanggal}}</td>
+                    <td><a href ="formibu/{{$ti->id}}/edit" class ="btn btn primary text-xs">edit</a>
+                    <form action ="formibu/{{$ti->id}}" method="POST">
+                        @csrf
+                        @method('delete')
+                     <input type ="submit" value="delete">
+                    </form>
+                    </td>
+
+                  </tr>
+                  @endforeach
                 </tbody> --}}
               </table>
+            </main>
+
+        </div>
+
               <!-- End Bordered Table -->
 
               {{-- <p><a href="https://getbootstrap.com/docs/5.0/utilities/borders/#border-color" target="_blank">Border color utilities</a> can be added to change colors:</p> --}}

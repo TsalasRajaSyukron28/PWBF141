@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Formbalita>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Balita>
  */
-class FormbalitaFactory extends Factory
+class BalitaFactory extends Factory
 {
     /**
      * Define the model's default state.

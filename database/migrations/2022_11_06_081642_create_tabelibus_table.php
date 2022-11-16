@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('tabelibus', function (Blueprint $table) {
             $table->id();
+            $table->String('nama');
+            $table->String('nik');
+            $table->String('alamat');
+            $table->date('tanggallahir');
+            $table->String('tinggibadan');
+            $table->String('beratbadan');
+            $table->String('tekanandarah');
             $table->timestamps();
         });
     }

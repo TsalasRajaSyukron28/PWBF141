@@ -172,49 +172,142 @@
       </nav>
     </div><!-- End Page Title -->
 
+
     <section class="section dashboard">
       <div class="row">
 
         <!-- Left side columns -->
         <div class="col-lg-8">
           <div class="row">
-
           </div>
         </div><!-- End Left side columns -->
+
 
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Tabel Ibu</h5>
               {{-- <p>Add <code>.table-bordered</code> for borders on all sides of the table and cells.</p> --}}
+              <a href="/formibu" class="btn btn-primary" role="button" data-bs-toggle="submit">Tambah</a>
               <!-- Bordered Table -->
-              <table class="table table-bordered">
+                <br>
                 <thead>
+                <br>
                   <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">NIK</th>
-                    <th scope="col">Alamat</th>
-                    <th scope="col">Tanggal Lahir</th>
-                    <th scope="col">Tinggi Badan</th>
-                    <th scope="col">Berat Badan</th>
-                    <th scope="col">Tekanan Darah</th>
-                    <th scope="col">Tanggal</th>
+                    <table class="table table-bordered">
+                    <td scope="col">Id</td>
+                    <td scope="col">Nama</td>
+                    <td scope="col">NIK</td>
+                    <td scope="col">Alamat</td>
+                    <td scope="col">Tanggal Lahir</td>
+                    <td scope="col">Tinggi Badan</td>
+                    <td scope="col">Berat Badan</td>
+                    <td scope="col">Tekanan Darah</td>
+                    <td scope="col">Tanggal</td>
+                    <td scope="col">aksi</td>
                   </tr>
                 </thead>
-                <tbody>
+                     <tbody>
                   <tr>
                     <th scope="row">001</th>
                     <td>Favian Hilmi</td>
                     <td>1234567890</td>
-                    <td>Jln Manukan</td>
-                    <td>25-5-2003</td>
+                    <td>Laki-Laki</td>
+                    <td>25</td>
+                    <td>24</td>
                     <td>135</td>
-                    <td></td>
-                    <td>180/20</td>
-                    <td>10-10-2010</td>
+                    <td>Jln Manukan</td>
+                    <td>17-07-2022</td>
+                    <td>
+                    <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          edit
+                        </button>
+                    <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="mb-1">
+                                    <label for="recipient-name" class="col-form-label">Nama</label>
+                                    <input type="text" class="form-control" name='Nama' id="recipient-name">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="recipient-name" class="col-form-label">NIK</label>
+                                    <input type="text" class="form-control" name='NIK' id="recipient-name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Alamat</label>
+                                    <input type="text" class="form-control" name='Jenis_Kelamin' id="recipient-name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Tanggal Lahir</label>
+                                    <input type="text" class="form-control" name='Tanggal_Lahir' id="recipient-name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Tinggi Badan</label>
+                                    <input type="text" class="form-control" name='Tinggi_Badan' id="recipient-name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Berat Badan</label>
+                                    <input type="text" class="form-control" name='Berat_Badan' id="recipient-name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Tekanan Darah</label>
+                                    <input type="text" class="form-control" name='Alamat' id="recipient-name">
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </td>
+                    <td>
+                     <!--delete-->
+                    <button type="button" class="btn btn-danger">
+                     delete
+                    </button>
+                    </td>
+
                   </tr>
                 </tbody>
+            </section>
+
+{{--
+                <tbody>
+                @foreach($tblibu as $ti)
+                  <tr>
+                    <th scope="row"></th>
+                    <td>{{$ti->nama}}</td>
+                    <td>{{$ti->nik}}</td>
+                    <td>{{$ti->alamat}}</td>
+                    <td>{{$ti->tanggallahir}}</td>
+                    <td>{{$ti->tinggibadan}}</td>
+                    <td>{{$ti->beratbadan}}</td>
+                    <td>{{$ti->tekanandarah}}</td>
+                    <td>{{$ti->tanggal}}</td>
+                    <td><a href ="formibu/{{$ti->id}}/edit" class ="btn btn primary text-xs">edit</a>
+                    <form action ="formibu/{{$ti->id}}" method="POST">
+                        @csrf
+                        @method('delete')
+                     <input type ="submit" value="delete">
+                    </form>
+                    </td>
+
+                  </tr>
+                  @endforeach
+                </tbody> --}}
               </table>
+            </main>
+
+        </div>
+
               <!-- End Bordered Table -->
 
               {{-- <p><a href="https://getbootstrap.com/docs/5.0/utilities/borders/#border-color" target="_blank">Border color utilities</a> can be added to change colors:</p> --}}

@@ -15,7 +15,8 @@ class FormibuController extends Controller
      */
     public function index()
     {
-        return view('admin/formibu');
+        $data = Formibu::orderBy('id', 'desc')->get();
+        return view('Admin/Formibu')->with('data', $data);
     }
 
     /**
@@ -25,7 +26,7 @@ class FormibuController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/formibu');
     }
 
     /**
@@ -36,7 +37,13 @@ class FormibuController extends Controller
      */
     public function store(StoreFormibuRequest $request)
     {
-        //
+        $data = [
+            'keterangan' => $request->Keterangan,
+            'Gambar' => $request->file
+        ];
+        Formibu::create($data);
+        $data = Formibu::orderBy('id', 'desc')->get();
+        return view('Admin.TabelPopup')->with('data', $data);
     }
 
     /**
@@ -58,7 +65,8 @@ class FormibuController extends Controller
      */
     public function edit(Formibu $formibu)
     {
-        //
+        // $frmibu = Formibu::find($id);
+        // return view('admin/edit',compact(['frmibu']));
     }
 
     /**
@@ -70,7 +78,9 @@ class FormibuController extends Controller
      */
     public function update(UpdateFormibuRequest $request, Formibu $formibu)
     {
-        //
+        // $formibu= Formibu::find($id);
+        // $pgn->update($request->except(['_token','submit']));
+        // return redirect('admin/formibu');
     }
 
     /**
@@ -82,5 +92,9 @@ class FormibuController extends Controller
     public function destroy(Formibu $formibu)
     {
         //
+        // $frmibu= Formibu::find($id);
+        // $frmibu->delete();
+
+        // return redirect('/formibu');
     }
 }

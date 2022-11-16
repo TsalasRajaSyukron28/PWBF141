@@ -187,8 +187,12 @@
               <h5 class="card-title">Tabel Vitamin</h5>
               {{-- <p>Add <code>.table-bordered</code> for borders on all sides of the table and cells.</p> --}}
               <!-- Bordered Table -->
-              <table class="table table-bordered">
+
+                <a href="/formvitamin" class="btn btn-primary" role="button" data-bs-toggle="submit">Tambah</a>
+                <br>
+                <br>
                 <thead>
+                <table class="table table-bordered">
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Nama</th>
@@ -196,6 +200,7 @@
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Vitamin</th>
+                    <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -206,6 +211,55 @@
                     <td>Laki-Laki</td>
                     <td>25-10-2010</td>
                     <td>A</td>
+                    <td>
+                        <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                              edit
+                            </button>
+                        <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="mb-1">
+                                        <label for="recipient-name" class="col-form-label">Nama</label>
+                                        <input type="text" class="form-control" name='Nama' id="recipient-name">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="recipient-name" class="col-form-label">NIK</label>
+                                        <input type="text" class="form-control" name='NIK' id="recipient-name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">Jenis Kelamin</label>
+                                        <input type="text" class="form-control" name='Jenis_Kelamin' id="recipient-name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">Tanggal Lahir</label>
+                                        <input type="text" class="form-control" name='Tanggal_Lahir' id="recipient-name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">Vitamin</label>
+                                        <input type="text" class="form-control" name='Tinggi_Badan' id="recipient-name">
+                                    </div>
+                                   
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </td>
+                        <td>
+                         <!--delete-->
+                        <button type="button" class="btn btn-danger">
+                         delete
+                        </button>
+                        </td>
                   </tr>
                 </tbody>
               </table>

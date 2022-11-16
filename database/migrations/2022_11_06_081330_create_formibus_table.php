@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('formibus', function (Blueprint $table) {
             $table->id();
+            $table->String('nama');
+            $table->String('nik');
+            $table->String('Alamat');
+            $table->date('tanggallahir');
+            $table->String('tinggibadan');
+            $table->String('beratbadan');
+            $table->String('tekanandarah');
             $table->timestamps();
         });
     }

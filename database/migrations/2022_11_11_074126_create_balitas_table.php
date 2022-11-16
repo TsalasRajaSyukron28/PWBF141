@@ -13,8 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tabelbalitas', function (Blueprint $table) {
+        Schema::create('balitas', function (Blueprint $table) {
             $table->id();
+            $table->String('Nama');
+            $table->String('Nik');
+            $table->String('Jeniskelamin');
+            $table->date('Tanggallahir');
+            $table->String('Tinggibadan');
+            $table->String('Beratbadan');
+            $table->String('Alamat');
+            $table->String('Namaibu');
             $table->timestamps();
         });
     }
@@ -26,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tabelbalitas');
+        Schema::dropIfExists('balitas');
     }
 };

@@ -15,10 +15,7 @@ class CekKehamilanController extends Controller
      */
     public function index()
     {
-        $hpht = date('d-m-Y',strtotime('+9 Month +7 Day',strtotime(request ('CekKehamilan'))));
-        if (request('CekKehamilan')!=null) {
-            return $hpht;
-        }
+       
         return view('CekKehamilan.hpht', [
         'title' == 'Cek Kehamilan'
         ]);

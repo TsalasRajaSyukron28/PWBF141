@@ -15,7 +15,11 @@ class Hasilcek1Controller extends Controller
      */
     public function index()
     {
-        return view('CekKehamilan/hasil');
+        $hpht = date('d-m-Y',strtotime('+9 Month +7 Day',strtotime(request ('CekKehamilan'))));
+
+        return view('CekKehamilan/hasil',[
+            'tgl'=>$hpht
+        ]);
     }
 
     /**

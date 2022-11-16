@@ -15,8 +15,12 @@ class Hasilcek2Controller extends Controller
      */
     public function index()
     {
-        return view('CekKesuburan/hasil2');
         
+        $tlght = date('d-m-Y',strtotime('+14 Day',strtotime(request ('CekKesuburan'))));
+        return view('CekKesuburan/hasil2',[
+            'tgl'=>$tlght
+        ]);
+
     }
 
     /**

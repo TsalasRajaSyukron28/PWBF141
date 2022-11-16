@@ -15,6 +15,8 @@ class TabelibuController extends Controller
      */
     public function index()
     {
+        // $tblibu = Formibu::all();
+        // return view('admin/tbl',compact(['tblibu']));
         return view('admin/tabelibu');
     }
 
@@ -36,7 +38,8 @@ class TabelibuController extends Controller
      */
     public function store(StoreTabelibuRequest $request)
     {
-        //
+        // Tabelibu::create($request->except(['_token','submit']));
+        // return redirect('/tabelibu');
     }
 
     /**
@@ -58,7 +61,8 @@ class TabelibuController extends Controller
      */
     public function edit(Tabelibu $tabelibu)
     {
-        //
+        // $tblibu = Tabelibu::find($id);
+        // return view('admin/edit',compact(['tblibu']));
     }
 
     /**
@@ -81,6 +85,10 @@ class TabelibuController extends Controller
      */
     public function destroy(Tabelibu $tabelibu)
     {
-        //
+
+        // $tblibu= Tabelibu::find($id);
+        // $tblibu->delete();
+
+        // return redirect('/formibu');
     }
 }

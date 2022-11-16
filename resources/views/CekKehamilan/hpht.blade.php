@@ -58,7 +58,8 @@
             Yuk Bunda, hitung tanggal perkiraan si Kecil lahir melalui langkah mudah di bawah ini.
           </p>
           <p class="text-white mb-1">Hari Pertama Haid Terakhir (HPHT):</p>
-          <form action="/hpht">
+          <form action="/hpht" method="POST">
+            @csrf
           <input type="date" id="HPHT" name="CekKehamilan">
           <input type="submit" href="/hasil">
         </div>

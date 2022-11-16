@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Formibu extends Model
 {
     use HasFactory;
+    // protected $table='formibu';
+    // protected $guarded = [];
 }

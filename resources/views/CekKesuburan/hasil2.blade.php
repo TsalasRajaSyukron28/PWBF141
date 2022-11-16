@@ -42,7 +42,7 @@
         <div class="col-lg-6 text-center text-lg-left">
           <h4 class="text-white mb-4 mt-5 mt-lg-0">Posyandu EMomma</h4>
           <h1 class="display-4 font-weight-bold text-white">Kalkulator Kesuburan</h1>
-          <p class="text-white mb-1">Perkiraan Tanggal:</p>
+          <p class="text-white mb-1">Perkiraan Tanggal:<br><h1>{{$tgl}}</h1></p>
         </div>
         <div class="col-lg-5 text-center text-lg-right">
           <img class="img-fluid mb-5 mt-3" src="img/momi.jpg"/>
