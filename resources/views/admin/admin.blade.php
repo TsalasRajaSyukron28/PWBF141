@@ -61,12 +61,7 @@
             </a>
           </li>
           <li>
-            <a href="/formpenimbangan">
-              <i class="bi bi-circle"></i><span>Form Penimbangan </span>
-            </a>
-          </li>
-          <li>
-            <a href="/formibu">
+            <a href="formibu/create">
               <i class="bi bi-circle"></i><span>Form Ibu Hamil</span>
             </a>
           </li>
@@ -103,6 +98,11 @@
               <i class="bi bi-circle"></i><span>Tabel Vitamin</span>
             </a>
           </li>
+          <li>
+            <a href="/tabelartikel">
+              <i class="bi bi-circle"></i><span>Tabel Artikel</span>
+            </a>
+          </li>
         </ul>
       </li><!-- End Tables Nav -->
 
@@ -122,8 +122,8 @@
             </a>
           </li>
           <li>
-            <a href="/laporanpenimbangan">
-              <i class="bi bi-circle"></i><span>Laporan Penimbangan</span>
+            <a href="/laporanvitamin">
+              <i class="bi bi-circle"></i><span>Laporan Vitamin</span>
             </a>
           </li>
           {{-- <li>

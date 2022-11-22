@@ -36,7 +36,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
+<a href='{{ url('formibu') }}'></a>
 <body>
     @include('admin.partials.header')
 
@@ -59,17 +59,12 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/formbalita">
+            <a href="formbalita/create">
               <i class="bi bi-circle"></i><span>Form Balita</span>
             </a>
           </li>
           <li>
-            <a href="/formpenimbangan">
-              <i class="bi bi-circle"></i><span>Form Penimbangan </span>
-            </a>
-          </li>
-          <li>
-            <a href="/formibu">
+            <a href="formibu/create">
               <i class="bi bi-circle"></i><span>Form Ibu Hamil</span>
             </a>
           </li>
@@ -104,6 +99,11 @@
            <li>
             <a href="/tabelvitamin">
               <i class="bi bi-circle"></i><span>Tabel Vitamin</span>
+            </a>
+          </li>
+          <li>
+            <a href="/tabelartikel">
+              <i class="bi bi-circle"></i><span>Tabel Artikel</span>
             </a>
           </li>
         </ul>
@@ -187,7 +187,7 @@
             <div class="card-body">
               <h5 class="card-title">Tabel Ibu</h5>
               {{-- <p>Add <code>.table-bordered</code> for borders on all sides of the table and cells.</p> --}}
-              <a href="/formibu" class="btn btn-primary" role="button" data-bs-toggle="submit">Tambah</a>
+              <a href="{{ url('formibu/create') }}" class="btn btn-primary" role="button" data-bs-toggle="submit">Tambah</a>
               <!-- Bordered Table -->
                 <br>
                 <thead>
@@ -207,102 +207,92 @@
                   </tr>
                 </thead>
                      <tbody>
-                  <tr>
-                    <th scope="row">001</th>
-                    <td>Favian Hilmi</td>
-                    <td>1234567890</td>
-                    <td>Laki-Laki</td>
-                    <td>25</td>
-                    <td>24</td>
-                    <td>135</td>
-                    <td>Jln Manukan</td>
-                    <td>17-07-2022</td>
-                    <td>
-                    <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                          edit
-                        </button>
+                        @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($data as $ti)
+                                <tr>
+                                    <td>{{$ti->id}}</td>
+                                    <td>{{$ti->Nama}}</td>
+                                    <td>{{$ti->Nik}}</td>
+                                    <td>{{$ti->Alamat}}</td>
+                                    <td>{{$ti->Tanggallahir}}</td>
+                                    <td>{{$ti->Tinggibadan}}</td>
+                                    <td>{{$ti->Beratbadan}}</td>
+                                    <td>{{$ti->Tekanandarah}}</td>
+                                    <td>{{date('d-m-Y',strtotime($ti->created_at))}}</td>
+                                    <td>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    edit
+                                    </button>
+                                    <form class='d-inline' action="/admin/{{$ti->id}}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger"> delete</button>
+                                    </form>
+                                </tr>
+                                    </td>
+                                 <tr>
+                <td>
                     <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data Balita</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="tabelibu" method="post">
+                            <input type ="hidden" name="id" value="{{$ti->id}}">
+                            {{ csrf_field()}}
+                            <div class="modal-body">
+                              <div class="mb-1">
+                                  <label for="recipient-name" class="col-form-label">Nama</label>
+                                  <input type="text" class="form-control" name='Nama' value="{{$ti->Nama}}">
                               </div>
-                              <div class="modal-body">
-                                <div class="mb-1">
-                                    <label for="recipient-name" class="col-form-label">Nama</label>
-                                    <input type="text" class="form-control" name='Nama' id="recipient-name">
-                                </div>
-                                <div class="mb-1">
-                                    <label for="recipient-name" class="col-form-label">NIK</label>
-                                    <input type="text" class="form-control" name='NIK' id="recipient-name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Alamat</label>
-                                    <input type="text" class="form-control" name='Jenis_Kelamin' id="recipient-name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Tanggal Lahir</label>
-                                    <input type="text" class="form-control" name='Tanggal_Lahir' id="recipient-name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Tinggi Badan</label>
-                                    <input type="text" class="form-control" name='Tinggi_Badan' id="recipient-name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Berat Badan</label>
-                                    <input type="text" class="form-control" name='Berat_Badan' id="recipient-name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Tekanan Darah</label>
-                                    <input type="text" class="form-control" name='Alamat' id="recipient-name">
-                                </div>
+                              <div class="mb-1">
+                                  <label for="recipient-name" class="col-form-label">NIK</label>
+                                  <input type="text" class="form-control" name='Nik' value="{{$ti->Nik}}">
                               </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                              <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Alamat</label>
+                                <input type="text" class="form-control" name='Alamat' value="{{$ti->Alamat}}">
+                            </div>
+                              <div class="mb-3">
+                                  <label for="recipient-name" class="col-form-label">Tanggal Lahir</label>
+                                  <input type="date" class="form-control" name='Tanggallahir' value="{{$ti->Tanggallahir}}">
                               </div>
+                              <div class="mb-3">
+                                  <label for="recipient-name" class="col-form-label">Tinggi Badan</label>
+                                  <input type="text" class="form-control" name='Tinggibadan' value="{{$ti->Tinggibadan}}">
+                              </div>
+                              <div class="mb-3">
+                                  <label for="recipient-name" class="col-form-label">Berat Badan</label>
+                                  <input type="text" class="form-control" name='Beratbadan' value="{{$ti->Beratbadan}}">
+                              </div>
+
+                              <div class="mb-3">
+                                  <label for="recipient-name" class="col-form-label">Tekanan Darah</label>
+                                  <input type="text" class="form-control" name='Tekanandarah' value="{{$ti->Tekanandarah}}">
+                              </div>
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
                           </div>
                         </div>
-                    </td>
-                    <td>
-                     <!--delete-->
-                    <button type="button" class="btn btn-danger">
-                     delete
-                    </button>
-                    </td>
+                      </div>
+                  </form>
+                  </td>
+                  <td>
 
-                  </tr>
-                </tbody>
-            </section>
+                </tr>
+                @endforeach
+              </tbody>
+          </section>
 
-{{--
-                <tbody>
-                @foreach($tblibu as $ti)
-                  <tr>
-                    <th scope="row"></th>
-                    <td>{{$ti->nama}}</td>
-                    <td>{{$ti->nik}}</td>
-                    <td>{{$ti->alamat}}</td>
-                    <td>{{$ti->tanggallahir}}</td>
-                    <td>{{$ti->tinggibadan}}</td>
-                    <td>{{$ti->beratbadan}}</td>
-                    <td>{{$ti->tekanandarah}}</td>
-                    <td>{{$ti->tanggal}}</td>
-                    <td><a href ="formibu/{{$ti->id}}/edit" class ="btn btn primary text-xs">edit</a>
-                    <form action ="formibu/{{$ti->id}}" method="POST">
-                        @csrf
-                        @method('delete')
-                     <input type ="submit" value="delete">
-                    </form>
-                    </td>
-
-                  </tr>
-                  @endforeach
-                </tbody> --}}
               </table>
             </main>
 

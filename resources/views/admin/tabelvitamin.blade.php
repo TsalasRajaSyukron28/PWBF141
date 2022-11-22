@@ -59,13 +59,8 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/formbalita">
+            <a href="formbalita/create">
               <i class="bi bi-circle"></i><span>Form Balita</span>
-            </a>
-          </li>
-          <li>
-            <a href="/formpenimbangan">
-              <i class="bi bi-circle"></i><span>Form Penimbangan </span>
             </a>
           </li>
           <li>
@@ -104,6 +99,11 @@
            <li>
             <a href="/tabelvitamin">
               <i class="bi bi-circle"></i><span>Tabel Vitamin</span>
+            </a>
+          </li>
+          <li>
+            <a href="/tabelartikel">
+              <i class="bi bi-circle"></i><span>Tabel Artikel</span>
             </a>
           </li>
         </ul>
@@ -245,7 +245,7 @@
                                         <label for="recipient-name" class="col-form-label">Vitamin</label>
                                         <input type="text" class="form-control" name='Tinggi_Badan' id="recipient-name">
                                     </div>
-                                   
+
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     <button type="button" class="btn btn-primary">Save changes</button>

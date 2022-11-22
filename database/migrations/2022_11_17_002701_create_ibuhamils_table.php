@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tabelibus', function (Blueprint $table) {
+        Schema::create('ibuhamils', function (Blueprint $table) {
             $table->id();
-            $table->String('nama');
-            $table->String('nik');
-            $table->String('alamat');
-            $table->date('tanggallahir');
-            $table->String('tinggibadan');
-            $table->String('beratbadan');
-            $table->String('tekanandarah');
+            $table->String('Nama');
+            $table->String('Nik');
+            $table->String('Alamat');
+            $table->date('Tanggallahir');
+            $table->String('Tinggibadan');
+            $table->String('Beratbadan');
+            $table->String('Tekanandarah');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tabelibus');
+        Schema::dropIfExists('ibuhamils');
     }
 };

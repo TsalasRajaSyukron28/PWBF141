@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Formbalita;
+use App\Models\Ibuhamil;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class FormbalitaPolicy
+class IbuhamilPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class FormbalitaPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Formbalita  $formbalita
+     * @param  \App\Models\Ibuhamil  $ibuhamil
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Formbalita $formbalita)
+    public function view(User $user, Ibuhamil $ibuhamil)
     {
         //
     }
@@ -48,10 +48,10 @@ class FormbalitaPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Formbalita  $formbalita
+     * @param  \App\Models\Ibuhamil  $ibuhamil
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Formbalita $formbalita)
+    public function update(User $user, Ibuhamil $ibuhamil)
     {
         //
     }
@@ -60,10 +60,10 @@ class FormbalitaPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Formbalita  $formbalita
+     * @param  \App\Models\Ibuhamil  $ibuhamil
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Formbalita $formbalita)
+    public function delete(User $user, Ibuhamil $ibuhamil)
     {
         //
     }
@@ -72,10 +72,10 @@ class FormbalitaPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Formbalita  $formbalita
+     * @param  \App\Models\Ibuhamil  $ibuhamil
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Formbalita $formbalita)
+    public function restore(User $user, Ibuhamil $ibuhamil)
     {
         //
     }
@@ -84,10 +84,10 @@ class FormbalitaPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Formbalita  $formbalita
+     * @param  \App\Models\Ibuhamil  $ibuhamil
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Formbalita $formbalita)
+    public function forceDelete(User $user, Ibuhamil $ibuhamil)
     {
         //
     }

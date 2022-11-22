@@ -71,12 +71,7 @@
             </a>
           </li>
           <li>
-            <a href="/formpenimbangan">
-              <i class="bi bi-circle"></i><span>Form Penimbangan </span>
-            </a>
-          </li>
-          <li>
-            <a href="/formibu">
+            <a href="formibu/create">
               <i class="bi bi-circle"></i><span>Form Ibu Hamil</span>
             </a>
           </li>
@@ -111,6 +106,11 @@
            <li>
             <a href="/tabelvitamin">
               <i class="bi bi-circle"></i><span>Tabel Vitamin</span>
+            </a>
+          </li>
+          <li>
+            <a href="/tabelartikel">
+              <i class="bi bi-circle"></i><span>Tabel Artikel</span>
             </a>
           </li>
         </ul>
@@ -239,7 +239,7 @@
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger"> delete</button>
                                         </form>
-
+                                    </tr>
                                         </td>
                                      <tr>
                     <td>
@@ -316,31 +316,6 @@
                   @endforeach
                 </tbody>
             </section>
-
-{{--
-                <tbody>
-                @foreach($tblibu as $ti)
-                  <tr>
-                    <th scope="row"></th>
-                    <td>{{$ti->nama}}</td>
-                    <td>{{$ti->nik}}</td>
-                    <td>{{$ti->alamat}}</td>
-                    <td>{{$ti->tanggallahir}}</td>
-                    <td>{{$ti->tinggibadan}}</td>
-                    <td>{{$ti->beratbadan}}</td>
-                    <td>{{$ti->tekanandarah}}</td>
-                    <td>{{$ti->tanggal}}</td>
-                    <td><a href ="formibu/{{$ti->id}}/edit" class ="btn btn primary text-xs">edit</a>
-                    <form action ="formibu/{{$ti->id}}" method="POST">
-                        @csrf
-                        @method('delete')
-                     <input type ="submit" value="delete">
-                    </form>
-                    </td>
-
-                  </tr>
-                  @endforeach
-                </tbody> --}}
               </table>
             </main>
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\FormbalitaController;
 use App\Http\Controllers\ProfiluserController;
 //admin
 use App\Http\Controllers\BalitaController;
+use App\Http\Controllers\IbuhamilController;
 use App\Http\Controllers\ProfileadminnController;
 use App\Http\Controllers\FormartikelController;
 use App\Http\Controllers\FormvitaminController;
@@ -47,7 +48,7 @@ use App\Http\Controllers\LaporanpenimbanganController;
 // });
 
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 });
 
@@ -94,27 +95,25 @@ Route::get('/profileadminn', [ProfileadminnController::class, 'index']);
 //admin form balita
 Route::resource('/formbalita',BalitaController::class);
 Route::get('/tabelbalita',[BalitaController::class,'index']);
+Route::get('/formbalita',[BalitaController::class,'index']);
 Route::post('/tabelbalita', [BalitaController::class, 'update']);
 // Route::get('/formbalita',[BalitaController::class,'create']);
 Route::post('/store',[BalitaController::class,'store']);
 Route::put('admin/tabelbalita', [BalitaController::class, 'update']);
 Route::delete('admin/{id}', [BalitaController::class, 'destroy']);
 
-
-// Route::post('/balita', [  BalitaController::class, 'store']);
-// Route::resource('/balita', [  DataAnakController::class, 'store']);
-Route::get('/formpenimbangan', [FormpenimbanganController::class, 'index']);
 //form ibuu
-Route::get('/formibu', [FormibuController::class, 'index']);
-// Route::post('/store', [FormibuController::class, 'store']);
-// Route::get('/formibu', [FormibuController::class, 'create']);
-//tabel ibuu
-Route::get('/tabelibu', [TabelibuController::class, 'index']);
-// Route::post('/store', [TabelibuController::class, 'store']);
-// Route::get('admin/{id}/edit', [TabelibuController::class, 'edit']);
-// Route::delete('/tabelibu', [TabelibuController::class, 'destroy']);
-// Route::get('/{id}', [TabelibuController::class, 'update']);
+Route::resource('/formibu',IbuhamilController::class);
+Route::get('/tabelibu',[IbuhamilController::class,'index']);
+Route::get('/formibu',[IbuhamilController::class,'index']);
+Route::post('/tabelibu', [IbuhamilController::class, 'update']);
+// Route::get('/formbalita',[BalitaController::class,'create']);
+Route::post('/store',[IbuhamilController::class,'store']);
+Route::put('admin/tabelibu', [IbuhamilController::class, 'update']);
+Route::delete('admin/{id}', [IbuhamilController::class, 'destroy']);
 
+//form penimbangan
+Route::get('/formpenimbangan', [FormpenimbanganController::class, 'index']);
 
 Route::get('/formvitamin', [FormvitaminController::class, 'index']);
 Route::get('/formartikel', [FormartikelController::class, 'index']);

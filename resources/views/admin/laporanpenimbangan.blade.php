@@ -59,17 +59,12 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/formbalita">
+            <a href="formbalita/create">
               <i class="bi bi-circle"></i><span>Form Balita</span>
             </a>
           </li>
           <li>
-            <a href="/formpenimbangan">
-              <i class="bi bi-circle"></i><span>Form Penimbangan </span>
-            </a>
-          </li>
-          <li>
-            <a href="/formibu">
+            <a href="formibu/create">
               <i class="bi bi-circle"></i><span>Form Ibu Hamil</span>
             </a>
           </li>

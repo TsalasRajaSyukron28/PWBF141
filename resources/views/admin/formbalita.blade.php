@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link rel="icon" type="image/x-icon" href="{{ asset ('https://spesialis1.ikf.fk.unair.ac.id/wp-content/uploads/2019/02/logo-unair.png') }}" />
+  <link rel="icon" type="image/x-icon" href="{{asset('https://spesialis1.ikf.fk.unair.ac.id/wp-content/uploads/2019/02/logo-unair.png') }}" />
 
 
   <!-- Google Fonts -->
@@ -65,13 +65,9 @@
               <i class="bi bi-circle"></i><span>Form Balita</span>
             </a>
           </li>
+
           <li>
-            <a href="/formpenimbangan">
-              <i class="bi bi-circle"></i><span>Form Penimbangan </span>
-            </a>
-          </li>
-          <li>
-            <a href="/formibu">
+            <a href="formibu/create">
               <i class="bi bi-circle"></i><span>Form Ibu Hamil</span>
             </a>
           </li>
@@ -108,6 +104,11 @@
               <i class="bi bi-circle"></i><span>Tabel Vitamin</span>
             </a>
           </li>
+          <li>
+            <a href="/tabelartikel">
+              <i class="bi bi-circle"></i><span>Tabel Artikel</span>
+            </a>
+          </li>
         </ul>
       </li><!-- End Tables Nav -->
 
@@ -128,7 +129,7 @@
           </li>
           <li>
             <a href="/laporanpenimbangan">
-              <i class="bi bi-circle"></i><span>Laporan Penimbangan</span>
+              <i class="bi bi-circle"></i><span>Laporan Vitamin</span>
             </a>
           </li>
         </ul>
@@ -199,7 +200,7 @@
                       <input type="text" name ="Nik" class="form-control">
                     </div>
                   </div>
-                  
+
                   <div class="row mb-1">
                     <label for="Option" class="col-sm-2 col">Jenis Kelamin</label>
                     <div class="col-sm-10">
@@ -260,7 +261,7 @@
             </div>
 
           </div>
-
+        </form>
         </div>
       </section>
 
@@ -278,7 +279,7 @@
   <script src="{{asset('assets/admin/vendor/php-email-form/validate.js')}}"></script>
 
   <!-- Template Main JS File -->
-  <script src="{{asset('assets/admin/js/main.js"></script>
+  <script src="{{asset('assets/admin/js/main.js')}}"></script>
 
 </body>
 
