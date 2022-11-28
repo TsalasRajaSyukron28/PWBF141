@@ -207,6 +207,11 @@
                     <td>{{ $data->created_at }}</td>
                     <td>
                       <a href="{{ route('keluhan.edit', $data->id)}}" class="btn btn-sm btn-outline-success">+Feedback</a>
+                      {{-- <form class='d-inline' action="/admin/{{$data->id}}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger"> delete</button>
+                        </form> --}}
                     </td>
                   </tr>
                 </td>

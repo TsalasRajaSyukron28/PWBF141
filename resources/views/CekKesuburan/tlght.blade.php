@@ -1,4 +1,69 @@
 <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            <meta name="description" content="" />
+            <meta name="author" content="" />
+            <title>Coming Soon - Start Bootstrap Theme</title>
+            <link rel="icon" type="image/x-icon" href="assets/user1/assets/favicon.ico" />
+            <!-- Font Awesome icons (free version)-->
+            <script src="assets/user1/https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+            <!-- Google fonts-->
+            <link rel="preconnect" href="assets/user1/https://fonts.gstatic.com" />
+            <link href="assets/user1/https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+            <link href="assets/user1/https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+            <!-- Core theme CSS (includes Bootstrap)-->
+            <link href="assets/user1/css/styles.css" rel="stylesheet" />
+        </head>
+        <body>
+            <!-- Background Video-->
+            <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="assets/user1/assets/mp4/ibu.webm" type="video/mp4" /></video>
+            <!-- Masthead-->
+            <div class="masthead">
+                <div class="masthead-content text-white">
+                    <div class="container-fluid px-4 px-lg-0">
+                        <h1 class="fst-italic lh-1 mb-4">Posyandu Emomma</h1>
+                        <p class="mb-5"> eMomma juga menyediakan fitur Kalkulator kesuburan,
+                            Yuk Bunda, hitung tanggal perkiraan masa kesuburan.
+                          </p>
+                          <p class="text-white mb-1">Hari Pertama Haid Terakhir (HPHT):</p>
+
+                        <!-- * * * * * * * * * * * * * * *-->
+                       <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                        {{-- <form id="contactForm" data-sb-form-api-token="API_TOKEN"> --}}
+                            <!-- Email address input-->
+                            <div class="row input-group-newsletter">
+                                <form action="/tlght" method="POST">
+                                    @csrf
+                                <div class="col"><input class="form-control" id="TLGHT" name ="CekKesuburan" type="date" /></div>
+                                <hr>
+                                <div class="col-auto"><button class="btn btn-primary" id="submitButton" type="submit" href="/hasil2">Submit</button>
+                                <button class="btn btn-secondary"><a href ="/user">Kembali</a></button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Bootstrap core JS-->
+            <script src="assets/user1/https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Core theme JS-->
+            <script src="assets/user1/js/scripts.js"></script>
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <!-- * *                               SB Forms JS                               * *-->
+            <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <script src="assets/user1/https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        </body>
+    </html>
+
+
+    {{-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -68,4 +133,4 @@
         </div>
       </div>
     </div>
-    <!-- Header End -->
+    <!-- Header End --> --}}

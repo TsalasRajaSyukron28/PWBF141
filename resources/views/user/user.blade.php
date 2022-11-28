@@ -44,7 +44,7 @@
           </div>
           <br>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="" class="btn-get-started">Balasan Anda</a>
+            <a href="/balasan" class="btn-get-started">Balasan Anda</a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">

@@ -11,7 +11,7 @@
           <li><a href="#hero">Home</a></li>
           <li class="dropdown"><a href="#"><span>Akun</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                  <li><a href="/profiluser">Profil</a></li>
+                  {{-- <li><a href="/profiluser">Profil</a></li> --}}
                   <li><a href="{{ route('logout')}}">Log out</a></li>
             </ul>
           </li>

@@ -68,8 +68,11 @@
 								</div>
 							</form>
 		          			<p class="text-center">Belum Punya Akun? <a href="{{ route('register') }}">Register</a></p>
+                              <p class="text-center"><a href="/">Home</a></p>
 		        		</div>
+
 		      		</div>
+
 				</div>
 			</div>
 		</div>

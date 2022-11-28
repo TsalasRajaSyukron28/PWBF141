@@ -17,6 +17,8 @@ class KeluhanuserController extends Controller
     public function index()
     {
         return view('user/keluhanuser');
+
+        return view('user/balasan');
     }
 
     /**
@@ -26,7 +28,7 @@ class KeluhanuserController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -65,7 +67,7 @@ class KeluhanuserController extends Controller
      */
     public function edit(Keluhanuser $keluhanuser, $id)
     {
-        
+
     }
 
     /**
@@ -77,7 +79,7 @@ class KeluhanuserController extends Controller
      */
     public function update(UpdateKeluhanuserRequest $request, Keluhanuser $keluhanuser, $id)
     {
-        
+
     }
 
     /**

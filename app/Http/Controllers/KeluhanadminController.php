@@ -87,8 +87,10 @@ class KeluhanadminController extends Controller
      * @param  \App\Models\Keluhanadmin  $keluhanadmin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Keluhanadmin $keluhanadmin)
+    public function destroy($id)
     {
-        //
+        // $feedback = Keluhanadmin::find($id);
+        // $feedback->delete();
+        // return redirect('admin/keluhanadmin');
     }
 }
