@@ -135,12 +135,12 @@
 
       <li class="nav-heading">Pages</li>
 
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="/profileadminn">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
-      </li><!-- End Profile Page Nav -->
+      </li><!-- End Profile Page Nav --> --}}
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/keluhanadmin">
@@ -178,7 +178,6 @@
         <!-- Left side columns -->
         <div class="col-lg-8">
           <div class="row">
-
           </div>
         </div><!-- End Left side columns -->
 
@@ -187,26 +186,40 @@
               <h5 class="card-title">Keluhan</h5>
               {{-- <p>Add <code>.table-bordered</code> for borders on all sides of the table and cells.</p> --}}
               <!-- Bordered Table -->
-              <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Keluhan</th>
-                    <th scope="col">Feedback</th>
-                    <th scope="col">Tanggal</th>
+                    <table class="table table-bordered">
+                    <td scope="col">Id</td>
+                    <td scope="col">Nama</td>
+                    <td scope="col">Keluhan</td>
+                    <td scope="col">Feedback</td>
+                    <td scope="col">Tanggal</td>
+                    <td scope="col">Action</td>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($keluhan as $data)
                   <tr>
-                    <th scope="row">001</th>
-                    <td>Favian Hilmi</td>
-                    <td>1234567890</td>
-                    <td>Jln Manukan</td>
-                    <td>25-5-2003</td>
+                    <th scope="row">{{ $data->id }}</th>
+                    <td>{{ $data->nama }}</td>
+                    <td>{{ $data->keluhan }}</td>
+                    <td>{{ $data->feedback }}</td>
+                    <td>{{ $data->created_at }}</td>
+                    <td>
+                      <a href="{{ route('keluhan.edit', $data->id)}}" class="btn btn-sm btn-outline-success">+Feedback</a>
+                    </td>
                   </tr>
+                </td>
+            </tr>
+                  @endforeach
                 </tbody>
+                </section>
               </table>
+            </main>
+            </div>
+        </div>
+    </div>
+
               <!-- End Bordered Table -->
 
               {{-- <p><a href="https://getbootstrap.com/docs/5.0/utilities/borders/#border-color" target="_blank">Border color utilities</a> can be added to change colors:</p> --}}

@@ -42,6 +42,10 @@
           <div class="d-flex justify-content-center justify-content-lg-start">
             <a href="/keluhanuser" class="btn-get-started">Keluhan</a>
           </div>
+          <br>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="" class="btn-get-started">Balasan Anda</a>
+          </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
           <img src="assets/user/img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">

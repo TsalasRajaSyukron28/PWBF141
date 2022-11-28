@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keluhanadmin;
+use App\Models\Keluhanuser;
 use App\Http\Requests\StoreKeluhanadminRequest;
 use App\Http\Requests\UpdateKeluhanadminRequest;
 
@@ -15,7 +16,8 @@ class KeluhanadminController extends Controller
      */
     public function index()
     {
-        return view('admin/keluhanadmin');
+        $keluhan = Keluhanuser::all();
+        return view('admin/keluhanadmin', compact('keluhan'));
     }
 
     /**
@@ -56,9 +58,11 @@ class KeluhanadminController extends Controller
      * @param  \App\Models\Keluhanadmin  $keluhanadmin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Keluhanadmin $keluhanadmin)
+    public function edit(Keluhanadmin $keluhanadmin, $id)
     {
-        //
+        $keluhan = Keluhanuser::where('id', '=', $id)->get();
+
+        return view('admin.formfeedback', compact('keluhan'));
     }
 
     /**
@@ -68,9 +72,13 @@ class KeluhanadminController extends Controller
      * @param  \App\Models\Keluhanadmin  $keluhanadmin
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateKeluhanadminRequest $request, Keluhanadmin $keluhanadmin)
+    public function update(UpdateKeluhanadminRequest $request, Keluhanuser $keluhanuser, $id)
     {
-        //
+        $feedback = Keluhanuser::find($id);
+        $feedback->feedback = $request->feedback;
+        $feedback->update();
+
+        return redirect('/keluhanadmin')->with('success', 'Feedback added successfully.');
     }
 
     /**

@@ -56,10 +56,16 @@
           <p class="text-white mb-1">
             eMomma juga menyediakan Keluhan
           </p>
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Keluhan :</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
+          <form action="{{ route('keluhan.store') }}" method="POST">
+            @csrf
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Keluhan :</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="keluhan"></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-secondary">Kirim</button>
+            </div>
+          </form>
         </div>
         <div class="col-lg-5 text-center text-lg-right">
           <img class="img-fluid mb-5 mt-3" src="img/momi.jpg"/>

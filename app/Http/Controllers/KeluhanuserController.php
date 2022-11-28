@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Keluhanuser;
 use App\Http\Requests\StoreKeluhanuserRequest;
 use App\Http\Requests\UpdateKeluhanuserRequest;
+use Illuminate\Support\Facades\Auth;
 
 class KeluhanuserController extends Controller
 {
@@ -25,7 +26,7 @@ class KeluhanuserController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +37,13 @@ class KeluhanuserController extends Controller
      */
     public function store(StoreKeluhanuserRequest $request)
     {
-        //
+        $keluhan = new Keluhanuser();
+        $keluhan->nama = Auth::user()->name;
+        $keluhan->keluhan = $request->keluhan;
+        $keluhan->feedback = '';
+        $keluhan->save();
+
+        return redirect('/keluhanuser')->with('success', 'Keluhan berhasil terkirim!');
     }
 
     /**
@@ -56,9 +63,9 @@ class KeluhanuserController extends Controller
      * @param  \App\Models\Keluhanuser  $keluhanuser
      * @return \Illuminate\Http\Response
      */
-    public function edit(Keluhanuser $keluhanuser)
+    public function edit(Keluhanuser $keluhanuser, $id)
     {
-        //
+        
     }
 
     /**
@@ -68,9 +75,9 @@ class KeluhanuserController extends Controller
      * @param  \App\Models\Keluhanuser  $keluhanuser
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateKeluhanuserRequest $request, Keluhanuser $keluhanuser)
+    public function update(UpdateKeluhanuserRequest $request, Keluhanuser $keluhanuser, $id)
     {
-        //
+        
     }
 
     /**

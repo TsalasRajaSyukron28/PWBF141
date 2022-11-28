@@ -31,6 +31,7 @@ use App\Http\Controllers\FormpenimbanganController;
 use App\Http\Controllers\KesehatanbalitaController;
 use App\Http\Controllers\LaporandatabalitaController;
 use App\Http\Controllers\LaporanpenimbanganController;
+use App\Models\Keluhanuser;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,80 +53,100 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+// Route::get('/login', function () {
+//     return view('login');
+// });
 
-Route::get('/register', function () {
-    return view('register');
-});
+// Route::get('/register', function () {
+//     return view('register');
+// });
 
-Route::get('/user', function () {
-    return view('user/user');
-});
+// Route::get('/user', function () {
+//     return view('user/user');
+// });
 
-Route::get('/admin', function () {
-    return view('admin/admin');
-});
+// Route::get('/admin', function () {
+//     return view('admin/admin');
+// });
 
 //Login
-Route::get('/home', [HomeController::class,'index']);
-Route::get('/login', [LoginController::class,'index']);
-Route::get('/register', [RegisterController::class,'index']);
+// Route::get('/home', [HomeController::class,'index']);
+// Route::get('/login', [LoginController::class,'index']);
+// Route::get('/register', [RegisterController::class,'index']);
 
-//-------------------USER-----------------//
-//user cek
-Route::get('/kalkulator',[CekKehamilanController::class,'index']);
-Route::get('/kalkulator2',[CekKesuburanController::class,'index']);
-Route::any('/hpht', [Hasilcek1Controller::class,'index']);
-Route::get('/hasil', [Hasilcek1Controller::class,'index']);
-Route::get('/hasil2', [Hasilcek2Controller::class,'index']);
-Route::any('/tlght', [Hasilcek2Controller::class,'index']);
-Route::get('/keluhanuser', [KeluhanuserController::class,'index']);
-Route::get('/kesehatanibu', [KesehatanibuController::class, 'index']);
-Route::get('/kesehatanbalita',[KesehatanbalitaController::class, 'index']);
 
-//user profile
-Route::get('/profiluser', [ProfiluserController::class,'index']);
 
-//-------------------ADMIN-----------------//
-Route::get('/admin', [DashboardadminController::class, 'index']);
-Route::get('/profileadminn', [ProfileadminnController::class, 'index']);
-
-//admin form balita
-Route::resource('/formbalita',BalitaController::class);
-Route::get('/tabelbalita',[BalitaController::class,'index']);
-Route::get('/formbalita',[BalitaController::class,'index']);
-Route::post('/tabelbalita', [BalitaController::class, 'update']);
-// Route::get('/formbalita',[BalitaController::class,'create']);
-Route::post('/store',[BalitaController::class,'store']);
-Route::put('admin/tabelbalita', [BalitaController::class, 'update']);
-Route::delete('admin/{id}', [BalitaController::class, 'destroy']);
-
-//form ibuu
-Route::resource('/formibu',IbuhamilController::class);
-Route::get('/tabelibu',[IbuhamilController::class,'index']);
-Route::get('/formibu',[IbuhamilController::class,'index']);
-Route::post('/tabelibu', [IbuhamilController::class, 'update']);
-// Route::get('/formbalita',[BalitaController::class,'create']);
-Route::post('/store',[IbuhamilController::class,'store']);
-Route::put('admin/tabelibu', [IbuhamilController::class, 'update']);
-Route::delete('admin/{id}', [IbuhamilController::class, 'destroy']);
-
-//form penimbangan
-Route::get('/formpenimbangan', [FormpenimbanganController::class, 'index']);
-
-Route::get('/formvitamin', [FormvitaminController::class, 'index']);
-Route::get('/formartikel', [FormartikelController::class, 'index']);
-Route::get('/keluhanadmin', [KeluhanadminController::class, 'index']);
-
-//admin laporan
-Route::get('/laporandataibu', [LaporandataIbuController::class, 'index']);
-Route::get('/laporandatabalita', [LaporandatabalitaController::class, 'index']);
-Route::get('/laporanpenimbangan', [LaporanpenimbanganController::class, 'index']);
-
-//admin tabel
-// Route::get('/tabelbalita', [TabelbalitaController::class, 'index']);
-Route::get('/tabelvitamin', [TabelvitaminController::class, 'index']);
 
 // ->name('balita')
+
+Route::get('/login', [LoginController::class, 'preLogin'])->name('login');
+Route::post('/post_login', [LoginController::class, 'postLogin'])->name('post_login');
+Route::get('/register', [LoginController::class, 'preRegister'])->name('register');
+Route::post('/post_register', [LoginController::class, 'postRegister'])->name('post_register');
+Route::get('/logout', [LoginController::class, 'Logout'])->name('logout');
+
+//-------------------ADMIN-----------------//
+Route::middleware(['auth', 'CheckRole:admin'])->group(function() {
+    Route::get('/admin', [DashboardadminController::class, 'index']);
+    Route::get('/profileadmin', [ProfileadminnController::class, 'index']);
+    
+    //admin form balita
+    Route::resource('/formbalita',BalitaController::class);
+    Route::get('/tabelbalita',[BalitaController::class,'index']);
+    Route::get('/formbalita',[BalitaController::class,'index']);
+    Route::post('/tabelbalita', [BalitaController::class, 'update']);
+    // Route::get('/formbalita',[BalitaController::class,'create']);
+    Route::post('/store',[BalitaController::class,'store']);
+    Route::put('admin/tabelbalita', [BalitaController::class, 'update']);
+    Route::delete('admin/{id}', [BalitaController::class, 'destroy']);
+
+    //form ibuu
+    Route::resource('/formibu',IbuhamilController::class);
+    Route::get('/tabelibu',[IbuhamilController::class,'index']);
+    Route::get('/formibu',[IbuhamilController::class,'index']);
+    Route::post('/tabelibu', [IbuhamilController::class, 'update']);
+    // Route::get('/formbalita',[BalitaController::class,'create']);
+    Route::post('/store',[IbuhamilController::class,'store']);
+    Route::put('admin/tabelibu', [IbuhamilController::class, 'update']);
+    Route::delete('admin/{id}', [IbuhamilController::class, 'destroy']);
+
+    //form penimbangan
+    Route::get('/formpenimbangan', [FormpenimbanganController::class, 'index']);
+
+    Route::get('/formvitamin', [FormvitaminController::class, 'index']);
+    Route::get('/formartikel', [FormartikelController::class, 'index']);
+    Route::get('/keluhanadmin', [KeluhanadminController::class, 'index']);
+    Route::get('/keluhan/edit/{id}', [KeluhanadminController::class, 'edit'])->name('keluhan.edit');
+    Route::post('/keluhan/update/{id}', [KeluhanadminController::class, 'update'])->name('keluhan.update');
+
+    //admin laporan
+    Route::get('/laporandataibu', [LaporandataIbuController::class, 'index']);
+    Route::get('/laporandatabalita', [LaporandatabalitaController::class, 'index']);
+    Route::get('/laporanpenimbangan', [LaporanpenimbanganController::class, 'index']);
+
+    //admin tabel
+    // Route::get('/tabelbalita', [TabelbalitaController::class, 'index']);
+    Route::get('/tabelvitamin', [TabelvitaminController::class, 'index']);
+
+});
+
+//-------------------USER-----------------//
+Route::middleware(['auth', 'CheckRole:user'])->group(function() {
+    Route::get('/user', function () {
+        return view('user/user');
+    });
+    //user profile
+    Route::get('/profiluser', [ProfiluserController::class,'index']);
+    //user cek
+    Route::get('/kalkulator',[CekKehamilanController::class,'index']);
+    Route::get('/kalkulator2',[CekKesuburanController::class,'index']);
+    Route::any('/hpht', [Hasilcek1Controller::class,'index']);
+    Route::get('/hasil', [Hasilcek1Controller::class,'index']);
+    Route::get('/hasil2', [Hasilcek2Controller::class,'index']);
+    Route::any('/tlght', [Hasilcek2Controller::class,'index']);
+    Route::get('/kesehatanibu', [KesehatanibuController::class, 'index']);
+    Route::get('/kesehatanbalita',[KesehatanbalitaController::class, 'index']);
+    
+    Route::get('/keluhanuser', [KeluhanuserController::class,'index']);
+    Route::post('/keluhan/store', [KeluhanuserController::class, 'store'])->name('keluhan.store');
+});

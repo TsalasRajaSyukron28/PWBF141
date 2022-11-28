@@ -10,11 +10,11 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link rel="icon" type="image/x-icon" href="{{asset('https://spesialis1.ikf.fk.unair.ac.id/wp-content/uploads/2019/02/logo-unair.png')}}" />
+  <link rel="icon" type="image/x-icon" href="{{asset('https://spesialis1.ikf.fk.unair.ac.id/wp-content/uploads/2019/02/logo-unair.png') }}" />
 
 
   <!-- Google Fonts -->
-  <link href="{{asset('https://fonts.gstatic.com" rel="preconnect')}}">
+  <link href="{{asset('https://fonts.gstatic.com')}}" rel="preconnect">
   <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i')}}" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -36,11 +36,8 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-<form  action='{{ url('formibu') }}' method='post' enctype="multipart/form-data">
-@csrf
 
 <body>
-
     @include('admin.partials.header')
 
 
@@ -62,10 +59,11 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/formbalita">
+            <a href="formbalita/create">
               <i class="bi bi-circle"></i><span>Form Balita</span>
             </a>
           </li>
+
           <li>
             <a href="formibu/create">
               <i class="bi bi-circle"></i><span>Form Ibu Hamil</span>
@@ -169,11 +167,11 @@
     <main id="main" class="main">
 
       <div class="pagetitle">
-        <h1>Form Ibu</h1>
+        <h1>Form Feedback</h1>
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-            <li class="breadcrumb-item active"><a href=/formibu>Formibu</a></li>
+            <li class="breadcrumb-item active"><a href="{{ route('keluhan.edit', $keluhan[0]->id) }}">Formfeedback</a></li>
           </ol>
         </nav>
       </div><!-- End Page Title -->
@@ -184,58 +182,33 @@
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Form Tambah Ibu</h5>
+                <h5 class="card-title">Form Input Feedback Keluhan</h5>
 
                 <!-- General Form Elements -->
-                <form>
+                <form  action='{{ route('keluhan.update', $keluhan[0]->id) }}' method='post' enctype="multipart/form-data">
+                  @csrf
                   <div class="row mb-3">
-                    <label for="inputText" class="col-sm-2 col-form-label">Nama</label>
+                    <label for="inputNama" class="col-sm-2 col-form-label">Nama User</label>
                     <div class="col-sm-10">
-                      <input type="text" name ="Nama" class="form-control">
+                      <input type="text" name ="nama" value="{{ $keluhan[0]->nama }}" class="form-control" disabled readonly>
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="inputEmail" class="col-sm-2 col-form-label">NIK</label>
+                    <label for="inputKeluhan" class="col-sm-2 col-form-label">Keluhan</label>
                     <div class="col-sm-10">
-                      <input type="text" name ="Nik" class="form-control">
+                      <input type="text" name ="keluhan" value="{{ $keluhan[0]->keluhan }}" class="form-control" disabled readonly>
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Alamat</label>
+                    <label for="inputFeedback" class="col-sm-2 col-form-label">Feedback</label>
                     <div class="col-sm-10">
-                      <input type="text" name ="Alamat" class="form-control">
+                      <textarea name="feedback" id="" cols="50" rows="5"></textarea>
+                      {{-- <input type="text" name ="feedback" class="form-control"> --}}
                     </div>
                   </div>
                   <div class="row mb-3">
-                    <label for="inputNumber" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                     <div class="col-sm-10">
-                      <input type="date" name="Tanggallahir" class="form-control">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputEmail" class="col-sm-2 col-form-label">Tinggi Badan</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="Tinggibadan" class="form-control">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputEmail" class="col-sm-2 col-form-label">Berat Badan</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="Beratbadan" class="form-control">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputEmail" class="col-sm-2 col-form-label">Tekanan Darah</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="Tekanandarah" class="form-control">
-                    </div>
-                  </div>
-
-
-                  <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">simpan</label>
-                    <div class="col-sm-10">
-                      <button type="submit" class="btn btn-primary">Save Data</button>
+                      <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                   </div>
 

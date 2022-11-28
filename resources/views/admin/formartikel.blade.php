@@ -135,12 +135,12 @@
 
       <li class="nav-heading">Pages</li>
 
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="/profileadminn">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
-      </li><!-- End Profile Page Nav -->
+      </li><!-- End Profile Page Nav --> --}}
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/keluhanadmin">

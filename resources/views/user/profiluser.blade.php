@@ -57,12 +57,12 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/admin/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Favian</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Favian</h6>
+              <h6>{{ Auth::user()->name }}</h6>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -76,7 +76,7 @@
             </li> --}}
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -122,7 +122,7 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
               <img src="assets/admin/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <h2>Kevin Anderson</h2>
+              <h2>{{ Auth::user()->name }}</h2>
             </div>
           </div>
 
@@ -156,7 +156,7 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Nama</div>
-                    <div class="col-lg-9 col-md-8">Favian</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->name }}</div>
                   </div>
 
                   <div class="row">
@@ -181,7 +181,7 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">favianhilmi@gmail.com</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->email }}</div>
                   </div>
 
                 </div>
