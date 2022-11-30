@@ -18,7 +18,7 @@ class KeluhanuserController extends Controller
     {
         return view('user/keluhanuser');
 
-        return view('user/balasan');
+        // return view('user/balasan');
     }
 
     /**
@@ -56,7 +56,8 @@ class KeluhanuserController extends Controller
      */
     public function show(Keluhanuser $keluhanuser)
     {
-        //
+        $balasan = Keluhanuser::all();
+        return view('user.balasan', compact('balasan'));
     }
 
     /**

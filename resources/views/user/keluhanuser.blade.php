@@ -71,7 +71,7 @@
                                       </form> --}}
 
 									<form action="{{ route('keluhan.store') }}" method="POST" name="keluhan" class="contactForm">
-                                        @csrf
+                  @csrf
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group">
@@ -81,7 +81,7 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<button type="submit" class="btn btn-primary">Kirim</button>
-                                                    <button class="btn btn-secondary"><a href ="/user">Kembali</a></button>
+                          <button class="btn btn-secondary"><a href ="/user">Kembali</a></button>
 												</div>
                                     </form>
 											</div>

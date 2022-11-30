@@ -6,6 +6,8 @@ use App\Models\Laporandataibu;
 use App\Http\Requests\StoreLaporandataibuRequest;
 use App\Http\Requests\UpdateLaporandataibuRequest;
 
+use PDF;
+
 class LaporandataibuController extends Controller
 {
     /**
@@ -82,5 +84,12 @@ class LaporandataibuController extends Controller
     public function destroy(Laporandataibu $laporandataibu)
     {
         //
+    }
+
+    public function cetak_pdf()
+    {
+        // $laporandi = Laporandataibu::all();
+        // $pdf = PDF ::loadview('admin.tabelibu',['cetaklaporandataibu' => $laporandi])->setpaper('A4','potrait');
+        // return $pdf->download('Laporan_data_Ibu');
     }
 }

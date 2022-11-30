@@ -68,25 +68,28 @@
                                             <td scope="col">Nama</td>
                                             <td scope="col">Keluhan</td>
                                             <td scope="col">Feedback</td>
+											<td scope="col">Tanggal</td>
                                           </tr>
                                         </thead>
                                         <tbody class="table-group-divider">
+                                          @foreach ($balasan as $bls)
                                           <tr>
+                                            <th scope="row">{{ $bls->id }}</th>
+                                            <td>{{ $bls->nama }}</td>
+                                            <td>{{ $bls->keluhan }}</td>
+                                            <td>{{ $bls->feedback }}</td>
+                                            <td>{{ $bls->created_at }}</td>
+                                          </tr>
+                                          @endforeach
+										  <a href="{{ route('user.balasan', $bls->id)}}"></a>
+
+	  										{{-- <tr>
                                             <th scope="row">1</th>
                                             <td>Mark</td>
                                             <td>Otto</td>
                                             <td>@mdo</td>
-                                          </tr>
-
-                                          {{-- @foreach ($keluhan as $data)
-                                          <tr>
-                                            <th scope="row">{{ $data->id }}</th>
-                                            <td>{{ $data->nama }}</td>
-                                            <td>{{ $data->keluhan }}</td>
-                                            <td>{{ $data->feedback }}</td>
-                                            <td>{{ $data->created_at }}</td>
-                                          </tr>
-                                          @endforeach --}}
+											<td>iyh</td>
+                                          </tr> --}}
 
                                           {{-- <tr>
                                             <th scope="row">2</th>

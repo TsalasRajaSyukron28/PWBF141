@@ -53,9 +53,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/balasan', function () {
-    return view('user/balasan');
-});
+// Route::get('/balasan', function () {
+//     return view('user/balasan');
+// });
 
 
 // Route::get('/login', function () {
@@ -123,10 +123,11 @@ Route::middleware(['auth', 'CheckRole:admin'])->group(function() {
     Route::get('/keluhanadmin', [KeluhanadminController::class, 'index']);
     Route::get('/keluhan/edit/{id}', [KeluhanadminController::class, 'edit'])->name('keluhan.edit');
     Route::post('/keluhan/update/{id}', [KeluhanadminController::class, 'update'])->name('keluhan.update');
-    Route::delete('admin/{id}', [KeluhanadminController::class, 'destroy']);
+    // Route::delete('admin/{id}', [KeluhanadminController::class, 'destroy']);
 
     //admin laporan
     Route::get('/laporandataibu', [LaporandataIbuController::class, 'index']);
+    // Route::get('/laporandataibu/cetak_pdf','LaporandataIbuController@cetak_pdf');
     Route::get('/laporandatabalita', [LaporandatabalitaController::class, 'index']);
     Route::get('/laporanpenimbangan', [LaporanpenimbanganController::class, 'index']);
 
@@ -155,5 +156,7 @@ Route::middleware(['auth', 'CheckRole:user'])->group(function() {
 
     // Route::get('/balasan', [KeluhanuserController::class,'index']);
     Route::get('/keluhanuser', [KeluhanuserController::class,'index']);
+    Route::get('/balasan', [KeluhanuserController::class,'show'])->name('user.balasan');
     Route::post('/keluhan/store', [KeluhanuserController::class, 'store'])->name('keluhan.store');
 });
+
