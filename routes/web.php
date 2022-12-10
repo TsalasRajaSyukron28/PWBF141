@@ -25,6 +25,7 @@ use App\Http\Controllers\CekKesuburanController;
 use App\Http\Controllers\KeluhanadminController;
 use App\Http\Controllers\KesehatanibuController;
 use App\Http\Controllers\TabelvitaminController;
+use App\Http\Controllers\TabelartikelController;
 use App\Http\Controllers\DashboardadminController;
 use App\Http\Controllers\LaporandataibuController;
 use App\Http\Controllers\FormpenimbanganController;
@@ -134,6 +135,7 @@ Route::middleware(['auth', 'CheckRole:admin'])->group(function() {
     //admin tabel
     // Route::get('/tabelbalita', [TabelbalitaController::class, 'index']);
     Route::get('/tabelvitamin', [TabelvitaminController::class, 'index']);
+    Route::get('/tabelartikel', [TabelartikelController::class, 'index']);
 
 });
 

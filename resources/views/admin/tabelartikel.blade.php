@@ -163,11 +163,11 @@
     <!--page-->
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Tabel Vitamin</h1>
+      <h1>Tabel Artikel</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-          <li class="breadcrumb-item"><a href="/tabelvitamin">TabelVitamin</li>
+          <li class="breadcrumb-item"><a href="/tabelartikel">TabelArtikel</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -184,22 +184,21 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Tabel Vitamin</h5>
+              <h5 class="card-title">Tabel Artikel</h5>
               {{-- <p>Add <code>.table-bordered</code> for borders on all sides of the table and cells.</p> --}}
               <!-- Bordered Table -->
 
-                <a href="/formvitamin" class="btn btn-primary" role="button" data-bs-toggle="submit">Tambah</a>
+                <a href="/formartikel" class="btn btn-primary" role="button" data-bs-toggle="submit">Tambah</a>
                 <br>
                 <br>
                 <thead>
                 <table class="table table-bordered">
                   <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">NIK</th>
-                    <th scope="col">Jenis Kelamin</th>
-                    <th scope="col">Tanggal Lahir</th>
-                    <th scope="col">Vitamin</th>
+                    <th scope="col">Gambar</th>
+                    <th scope="col">Kategori Artikel</th>
+                    <th scope="col">Judul Artikel</th>
+                    <th scope="col">Text</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -210,18 +209,19 @@
                     <td>1234567890</td>
                     <td>Laki-Laki</td>
                     <td>25-10-2010</td>
-                    <td>A</td>
+
                     <td>
                         <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                               edit
                             </button>
 
-                              <!--delete-->
-                             <button type="button" class="btn btn-danger">
-                              delete
-                             </button>
-                    
+                                 <!--delete-->
+                                 <button type="button" class="btn btn-danger">
+                                  delete
+                                 </button>
+
+                                 
                         <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
