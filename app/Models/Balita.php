@@ -21,4 +21,10 @@ class Balita extends Model
         'Namaibu',
         'Tanggal',
     ];
+
+    public function vitamin()
+    {
+        return this->belongsToMany(Vitamin::class, 'balita_vitamin', 'balita_id', 'vitamin_id');
+    }
+
 }

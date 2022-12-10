@@ -221,36 +221,42 @@
                                   delete
                                  </button>
 
-                                 
+
                         <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Artikel</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                   </div>
                                   <div class="modal-body">
-                                    <div class="mb-1">
-                                        <label for="recipient-name" class="col-form-label">Nama</label>
-                                        <input type="text" class="form-control" name='Nama' id="recipient-name">
+                                    <form>
+                                      <div class="row mb-3">
+                                          <label for="inputImage" class="col-sm-5 col-form-label">Masukkan Gambar</label>
+                                          <div class="col-sm-10">
+                                            <input class="form-control" type="file" id="formFile">
+                                          </div>
+                                        </div>
+                                    <div class="row mb-3">
+                                      <label for="inputText" class="col-sm-5 col-form-label">Kategori Artikel</label>
+                                      <div class="col-sm-10">
+                                        <input type="text" class="form-control">
+                                      </div>
                                     </div>
-                                    <div class="mb-1">
-                                        <label for="recipient-name" class="col-form-label">NIK</label>
-                                        <input type="text" class="form-control" name='NIK' id="recipient-name">
+                                    <div class="row mb-3">
+                                      <label for="inputText" class="col-sm-5 col-form-label">Judul Artikel</label>
+                                      <div class="col-sm-10">
+                                        <input type="text" class="form-control">
+                                      </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Jenis Kelamin</label>
-                                        <input type="text" class="form-control" name='Jenis_Kelamin' id="recipient-name">
+                                    <div class="row mb-3">
+                                      <label for="inputText" class="col-sm-5 col-form-label">Tulis Artikel</label>
+                                      <div class="col-sm-10">
+                                        <textarea class="form-control" style="height: 100px"></textarea>
+                                      </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Tanggal Lahir</label>
-                                        <input type="text" class="form-control" name='Tanggal_Lahir' id="recipient-name">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Vitamin</label>
-                                        <input type="text" class="form-control" name='Tinggi_Badan' id="recipient-name">
-                                    </div>
+                                  </form><!-- End General Form Elements -->
 
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

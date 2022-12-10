@@ -56,9 +56,10 @@ class FormvitaminController extends Controller
      * @param  \App\Models\Formvitamin  $formvitamin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Formvitamin $formvitamin)
+    public function edit(Formvitamin $id)
     {
-        //
+        $balita = Balita::find($id);
+        return view('formvitamin',compact('vitamin','balita'));
     }
 
     /**
@@ -68,9 +69,27 @@ class FormvitaminController extends Controller
      * @param  \App\Models\Formvitamin  $formvitamin
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFormvitaminRequest $request, Formvitamin $formvitamin)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'Nama'=>'required',
+            'Nik'=>'required',
+            'Jeniskelamin'=>'required',
+            'Tanggallahir'=>'required'
+        ]);
+
+        $balita= Balita::find($id);
+        // Getting values from the blade template form
+        $balita->Nama =  $request->get('Nama');
+        $balita->Nik = $request->get('Nik');
+        $balita->Jeniskelamin = $request->get('Jeniskelamin');
+        $balita->Tanggallahir = $request->get('Tanggallahir');
+        $balita->save();
+        $balita_vitamin = new Balita_Vitamin;
+        $balita_vitamin->create([
+            'balita_id'=>$balita->id,
+            'vitamin_id'=>$request->id
+        ]);
     }
 
     /**
