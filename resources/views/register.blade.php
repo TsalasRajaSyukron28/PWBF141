@@ -62,7 +62,8 @@
 										<span toggle="#cpassword-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 										<span class="text-danger">@error('cpassword'){{$message}}@enderror</span>
 									</div>
-									<div class="form-group mt-3">
+									<input type="hidden" name="role" value="user">
+									{{-- <div class="form-group mt-3">
 										<select name="role" id="role" class="form-control">
 											<option selected>-- Choose Role --</option>
 											<option value="admin">Admin</option>
@@ -73,7 +74,7 @@
 												</div>
 											</div>
 										</select>
-									</div>
+									</div> --}}
 									<div class="form-group">
 										<button type="submit" class="form-control btn btn-primary rounded submit px-3">Register</button>
 									</div>

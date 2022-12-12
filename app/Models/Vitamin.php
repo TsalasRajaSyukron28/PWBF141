@@ -2,22 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Balita;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Vitamin extends Model
 {
     use HasFactory;
     protected $table = 'vitamin';
-    protected $fillable = [
-        'namaVitamin'
+    protected $guarded =[
+        'id',
+        // 'Nama',
+        // 'namaVitamin',
+        // 'saran',
     ];
     public $timestamps=false;
 
-
-    public function balita()
+    public function balita(): BelongsTo
     {
-        return this->belongsToMany(Balita::class, 'balita_vitamin', 'vitamin_id', 'balita_id');
+        return $this->belongsTo(Balita::class,  'id_balita');
     }
 
     // public function balita()

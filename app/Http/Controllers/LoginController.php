@@ -120,7 +120,7 @@ class LoginController extends Controller
     public function preRegister(){
         return view('/register');
     }
-    
+
     public function postRegister(Request $request)
     {
      $this->validate($request,[
@@ -128,7 +128,6 @@ class LoginController extends Controller
         'email'=>'required|email|unique:users',
         'password'=>'required',
         'cpassword'=> 'required|same:password',
-        'role'=>'required'
      ]);
 
      User::create([

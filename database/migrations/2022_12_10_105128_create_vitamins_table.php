@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('vitamin', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_balita');
+            $table->integer('Nama');
             $table->String('namaVitamin');
+            $table->text('saran');
         });
     }
 

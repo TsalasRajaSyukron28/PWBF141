@@ -198,76 +198,90 @@
                     <th scope="col">Gambar</th>
                     <th scope="col">Kategori Artikel</th>
                     <th scope="col">Judul Artikel</th>
-                    <th scope="col">Text</th>
+                    <th scope="col">Isi</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">001</th>
-                    <td>Favian Hilmi</td>
-                    <td>1234567890</td>
-                    <td>Laki-Laki</td>
-                    <td>25-10-2010</td>
+                  @foreach ($artikel as $art)
+                  {{-- <th scope="row">{{ $loop->iteration }}</th> --}}
+                  <th scope="row">{{ $art->id }}</th>
+                  <td>{{ $art->Gambar }}</td>
+                  <td>{{ $art->Kategori }}</td>
+                  <td>{{ $art->Judul }}</td>
+                  <td>{{ $art->Isi }}</td>
 
-                    <td>
-                        <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                              edit
-                            </button>
+                  <td>
+                    <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$art->id}}">
+                          edit
+                        </button>
 
-                                 <!--delete-->
-                                 <button type="button" class="btn btn-danger">
-                                  delete
-                                 </button>
+                             <!--delete-->
+                             <form class='d-inline' action="/admin/{{$art->id}}" method="POST">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="btn btn-danger"> delete</button>
+                              </form>
 
-
-                        <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Artikel</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
+                    <!-- Modal -->
+                        <div class="modal fade" id="exampleModal{{$art->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Artikel</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <form action="admin/tabelartikel" method="post">
+                                @csrf
+                                @method('put')
+                                <input type ="hidden" name="id" value="{{$art->id}}">
                                   <div class="modal-body">
-                                    <form>
-                                      <div class="row mb-3">
-                                          <label for="inputImage" class="col-sm-5 col-form-label">Masukkan Gambar</label>
-                                          <div class="col-sm-10">
-                                            <input class="form-control" type="file" id="formFile">
-                                          </div>
-                                        </div>
-                                    <div class="row mb-3">
-                                      <label for="inputText" class="col-sm-5 col-form-label">Kategori Artikel</label>
+                                  <div class="row mb-3">
+                                      <label for="inputImage" class="col-sm-5 col-form-label">Masukkan Gambar</label>
                                       <div class="col-sm-10">
-                                        <input type="text" class="form-control">
+                                        <input class="form-control" type="file" name="Gambar" id="formFile" value="{{$art->Gambar}}">
                                       </div>
                                     </div>
-                                    <div class="row mb-3">
-                                      <label for="inputText" class="col-sm-5 col-form-label">Judul Artikel</label>
-                                      <div class="col-sm-10">
-                                        <input type="text" class="form-control">
-                                      </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                      <label for="inputText" class="col-sm-5 col-form-label">Tulis Artikel</label>
-                                      <div class="col-sm-10">
-                                        <textarea class="form-control" style="height: 100px"></textarea>
-                                      </div>
-                                    </div>
-                                  </form><!-- End General Form Elements -->
-
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                <div class="row mb-3">
+                                  <label for="inputText" class="col-sm-5 col-form-label">Kategori Artikel</label>
+                                  <div class="col-sm-10">
+                                    <input type="text" name="Kategori" class="form-control" value="{{$art->Kategori}}">
                                   </div>
                                 </div>
+                                <div class="row mb-3">
+                                  <label for="inputText" class="col-sm-5 col-form-label">Judul Artikel</label>
+                                  <div class="col-sm-10">
+                                    <input type="text" name="Judul" class="form-control" value="{{$art->Judul}}">
+                                  </div>
+                                </div>
+                                <div class="row mb-3">
+                                  <label for="inputText" class="col-sm-5 col-form-label">Tulis Artikel</label>
+                                  <div class="col-sm-10">
+                                    <textarea class="form-control" name="Isi" style="height: 100px">{{$art->Isi}}</textarea>
+                                  </div>
+                                </div>
+                              </form><!-- End General Form Elements -->
+
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
                               </div>
                             </div>
-                        </td>
+                          </div>
+                        </div>
+                    </td>
+                  </form>
+                </td>
+              </td>
+              </tr>
+                  @endforeach
+                </section>
+                {{-- @endsection --}}
+              </table>
+            </main>
+          </div>
 
-                  </tr>
                 </tbody>
               </table>
               <!-- End Bordered Table -->

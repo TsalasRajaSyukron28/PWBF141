@@ -16,7 +16,7 @@ class BalitaController extends Controller
      */
     public function index()
     {
-        $data = Balita::orderBy('id', 'desc')->get();
+        $data = Balita::orderBy('id', 'asc')->get();
         return view('admin.tabelbalita')->with('data', $data);
     }
 
@@ -38,19 +38,6 @@ class BalitaController extends Controller
      */
     public function store(StoreBalitaRequest $request)
     {
-        // $data = [
-        //     'Nama'=>$request->Nama,
-        //     'Nik'=>$request->Nik,
-        //     'Jeniskelamin'=>$request->Jeniskelamin,
-        //     'Tanggallahir'=>$request->Tanggallahir,
-        //     'Tinggibadan'=>$request->Tinggibadan,
-        //     'Beratbadan'=>$request->Beratbadan,
-        //     'Alamat'=>$request->Alamat,
-        //     'Namaibu'=>$request->Namaibu,
-        // ];
-        // Balita::create($data);
-        // return redirect('admin.tabelbalita')->with('data', $data);
-        // $data = Balita::orderBy('id', 'desc')->get();
         Balita::create($request->except(['_token','submit']));
         return redirect('/tabelbalita');
     }

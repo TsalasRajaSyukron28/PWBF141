@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Balita;
 use App\Models\Dashboardadmin;
 use App\Http\Requests\StoreDashboardadminRequest;
 use App\Http\Requests\UpdateDashboardadminRequest;
@@ -15,7 +16,7 @@ class DashboardadminController extends Controller
      */
     public function index()
     {
-        return view('admin/admin');
+        return view('admin.admin');
     }
 
     /**

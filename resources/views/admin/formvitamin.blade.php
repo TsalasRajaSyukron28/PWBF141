@@ -14,20 +14,21 @@
 
 
   <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="{{asset('https://fonts.gstatic.com" rel="preconnect')}}">
+  <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i')}}" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/admin/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/admin/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/admin/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/admin/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/admin/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/admin/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="{{asset('assets/admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/admin/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/admin/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/admin/vendor/quill/quill.snow.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/admin/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/admin/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/admin/vendor/simple-datatables/style.css')}}" rel="stylesheet">
+  <script src="{{asset('https://code.jquery.com/jquery-3.6.1.js')}}" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
   <!-- Template Main CSS File -->
-  <link href="assets/admin/css/style.css" rel="stylesheet">
+  <link href="{{asset('assets/admin/css/style.css')}}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
@@ -36,11 +37,17 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+<form  action='{{ url('formvitamin') }}' method='post' enctype="multipart/form-data">
+  @csrf
 
 <body>
     @include('admin.partials.header')
 
-
+  @if (session()->has('success'))
+    <script>
+      alert('{{ session('success') }}');
+    </script>
+  @endif
     <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
@@ -69,7 +76,7 @@
             </a>
           </li>
           <li>
-            <a href="/formvitamin">
+            <a href="formvitamin/create">
               <i class="bi bi-circle"></i><span>Form Vitamin</span>
             </a>
           </li>
@@ -170,7 +177,7 @@
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-            <li class="breadcrumb-item active"><a href=/formpenimbangan>Formvitamin</a></li>
+            <li class="breadcrumb-item active"><a href=/formvitamin>Formvitamin</a></li>
           </ol>
         </nav>
       </div><!-- End Page Title -->
@@ -181,44 +188,69 @@
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Form Vitamin</h5>
+                <h5 class="card-title">Form Tambah Vitamin</h5>
 
                 <!-- General Form Elements -->
-                <form>
+                {{-- <form>
                   <div class="row mb-3">
                     <label for="inputText" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control">
+                      <input type="text" name ="id_balitaa" class="form-control">
                     </div>
-                  </div>
+                  </div> --}}
+                <form action="" method="POST">
+                  @csrf
                   <div class="row mb-3">
-                    <label for="inputEmail" class="col-sm-2 col-form-label">NIK</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control">
+                    <div class="col-sm-2">
+                      Nama Balita
+                    </div>
+                    <div class="col-md">
+                      <select id="nama_bayi" class="form-select" name="id_balitaa" aria-label="Default select example">
+                        <option value="0">Silahkan pilih nama bayi</option>
+                        @foreach ($balita as $item)
+                        <option value="{{ $item->id }}">{{ $item->Nama }}</option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
-                  <div class="row mb-3">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control">
+
+                  {{-- <div class="row mb-3">
+                    <div class="col-sm-2">
+                        Pilih Vitamin
                     </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="inputNumber" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-                    <div class="col-sm-10">
-                      <input type="date" class="form-control">
-                    </div>
-                  </div>
+                    <div class="col-md">
+                    <select class="form-select" name="vitamin" aria-label="Default select example">
+                    <option value="0">Silahkan pilih vitamin</option>
+                    <option value ='A'>A</option>
+                    <option value ='B'>B</option>
+                    <option value ='B6'>B6</option>
+                    <option value ='B12'>B12</option>
+                    <option value ='C'>C</option>
+                    <option value ='D'>D</option>
+                    <option value ='E'>E</option>
+                    <option value ='K'>K</option>
+                    <option value ='lainnya'>lainnya</option>
+                  </select>
+                </div>
+              </div> --}}
+
+
                   <div class="row mb-3">
                     <label for="inputEmail" class="col-sm-2 col-form-label">Vitamin</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control">
+                      <input type="text" name="vitamin" class="form-control">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="inputEmail" class="col-sm-2 col-form-label">Saran</label>
+                    <div class="col-sm-10">
+                      <input type="text"  name="saran" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">simpan</label>
                     <div class="col-sm-10">
-                      <button type="submit" class="btn btn-primary">Save Data</button>
+                      <button type="submit" id="submit" class="btn btn-primary">Save Data</button>
                     </div>
                   </div>
 
@@ -230,27 +262,39 @@
           </div>
 
         </div>
-      </section>
+
 
     </main><!-- End #main -->
 
-              <p><a href="https://getbootstrap.com/docs/5.0/utilities/borders/#border-color" target="_blank">Border color utilities</a> can be added to change colors:</p>
 
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/admin/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/admin/vendor/chart.js/chart.min.js"></script>
-  <script src="assets/admin/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/admin/vendor/quill/quill.min.js"></script>
-  <script src="assets/admin/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/admin/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/admin/vendor/php-email-form/validate.js"></script>
+  <script src="{{asset('assets/admin/vendor/apexcharts/apexcharts.min.js')}}"></script>
+  <script src="{{asset('assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('assets/admin/vendor/chart.js/chart.min.js')}}"></script>
+  <script src="{{asset('assets/admin/vendor/echarts/echarts.min.js')}}"></script>
+  <script src="{{asset('assets/admin/vendor/quill/quill.min.js')}}"></script>
+  <script src="{{asset('assets/admin/vendor/simple-datatables/simple-datatables.js')}}"></script>
+  <script src="{{asset('assets/admin/vendor/tinymce/tinymce.min.js')}}"></script>
+  <script src="{{asset('assets/admin/vendor/php-email-form/validate.js')}}"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/admin/js/main.js"></script>
+  <script src="{{asset('assets/admin/js/main.js')}}"></script>
+  {{-- <script type="text/javascript">
+    $('#nama_bayi').change(function (e) {
+      if($(this).val()==0){
+          $('#submit').hide();
+        }else{
+          $('#submit').show();
+
+      }
+    });
+    $(document).ready(function () {
+      if($('#nama_bayi').val()==0){
+          $('#submit').hide();
+      }
+    });
+  </script> --}}
 
 </body>
 

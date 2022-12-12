@@ -203,7 +203,10 @@
                       <i class="bi bi-form"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>12</h6>
+                      {{-- @foreach ( $balita as $blt )
+
+                      @endforeach --}}
+                        {{-- <h6>{{ $blt->count() }}</h6> --}}
                       {{-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> --}}
                     </div>
                   </div>

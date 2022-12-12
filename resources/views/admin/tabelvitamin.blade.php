@@ -36,7 +36,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
+<a href='{{ url('formvitamin') }}'></a>
 <body>
     @include('admin.partials.header')
 
@@ -69,7 +69,7 @@
             </a>
           </li>
           <li>
-            <a href="/formvitamin">
+            <a href="formvitamin/create">
               <i class="bi bi-circle"></i><span>Form Vitamin</span>
             </a>
           </li>
@@ -188,82 +188,105 @@
               {{-- <p>Add <code>.table-bordered</code> for borders on all sides of the table and cells.</p> --}}
               <!-- Bordered Table -->
 
-                <a href="/formvitamin" class="btn btn-primary" role="button" data-bs-toggle="submit">Tambah</a>
-                <br>
+                <a href="{{ url('/formvitamin') }}" class="btn btn-primary" role="button" data-bs-toggle="submit">Tambah</a>
                 <br>
                 <thead>
-                <table class="table table-bordered">
+                <br>
                   <tr>
+                    <table class="table table-bordered">
                     <th scope="col">Id</th>
                     <th scope="col">Nama</th>
                     <th scope="col">NIK</th>
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Vitamin</th>
+                    <th scope="col">Saran</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($balita as $item)
                   <tr>
-                    <th scope="row">001</th>
-                    <td>Favian Hilmi</td>
-                    <td>1234567890</td>
-                    <td>Laki-Laki</td>
-                    <td>25-10-2010</td>
-                    <td>A</td>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->balita->Nama }}</td>
+                    <td>{{ $item->balita->Nik }}</td>
+                    <td>{{ $item->balita->Jeniskelamin }}</td>
+                    <td>{{ $item->balita->Tanggallahir }}</td>
+                    <td>{{ $item->namaVitamin }}</td>
+                    <td>{{ $item->saran }}</td>
                     <td>
                         <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$item->id}}">
                               edit
                             </button>
+                            <form class='d-inline' action="/admin/{{$item->id}}" method="POST">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="btn btn-danger"> delete</button>
+                              </form>
+                            </tr>
+                          </td>
+                          <tr>
 
-                              <!--delete-->
-                             <button type="button" class="btn btn-danger">
-                              delete
-                             </button>
-                    
                         <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data Vitamin Balita</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                   </div>
+                                  {{-- <form action="{{url('vitamin/update')}}/{{$item->id}}" method="post"> --}}
+                                  <form action="admin/tabelvitamin" method="post">
+                                    @csrf
+                                    @method('put')
+                                    <input type ="hidden" name="id" value="{{$item->balita->id}}">
+                                    {{ csrf_field()}}
                                   <div class="modal-body">
-                                    <div class="mb-1">
-                                        <label for="recipient-name" class="col-form-label">Nama</label>
-                                        <input type="text" class="form-control" name='Nama' id="recipient-name">
-                                    </div>
-                                    <div class="mb-1">
-                                        <label for="recipient-name" class="col-form-label">NIK</label>
-                                        <input type="text" class="form-control" name='NIK' id="recipient-name">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Jenis Kelamin</label>
-                                        <input type="text" class="form-control" name='Jenis_Kelamin' id="recipient-name">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Tanggal Lahir</label>
-                                        <input type="text" class="form-control" name='Tanggal_Lahir' id="recipient-name">
-                                    </div>
+                                    {{-- <div class="col-md">
+                                      <select id="nama_bayi" class="form-select" name="Nama" aria-label="Default select example">
+                                        <option value="0">Silahkan pilih nama bayi</option>
+                                        @foreach ($balita as $item)
+                                        <option value="{{ $item->id }}">{{ $item->Balita->Nama }}</option>
+                                        @endforeach
+                                      </select>
+                                    </div> --}}
+
+                                  <div class="mb-1">
+                                    <label for="recipient-name" class="col-form-label">Nama</label>
+                                    <input type="text" class="form-control" name='Nama' value="{{$item->Balita->Nama}}">
+                                  </div>
+
                                     <div class="mb-3">
                                         <label for="recipient-name" class="col-form-label">Vitamin</label>
-                                        <input type="text" class="form-control" name='Tinggi_Badan' id="recipient-name">
+                                        <input type="text" class="form-control" name='vitamin' value="{{ $item->namaVitamin }}">
+                                    </div>
+                                    <div class="mb-1">
+                                      <label for="recipient-name" class="col-form-label">Saran</label>
+                                      <input type="text" class="form-control" name='saran' value="{{$item->saran}}">
                                     </div>
 
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
                                   </div>
                                 </div>
                               </div>
                             </div>
                         </td>
-
+                      </form>
+                    </td>
+                  </td>
                   </tr>
+                  @endforeach
                 </tbody>
+                </section>
+
+                {{-- @endsection --}}
               </table>
+            </main>
+          </div>
+
               <!-- End Bordered Table -->
 
               {{-- <p><a href="https://getbootstrap.com/docs/5.0/utilities/borders/#border-color" target="_blank">Border color utilities</a> can be added to change colors:</p> --}}

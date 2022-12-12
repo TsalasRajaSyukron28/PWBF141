@@ -184,29 +184,30 @@
                 <h5 class="card-title">Form Artikel</h5>
 
                 <!-- General Form Elements -->
-                <form>
+                <form action="/tambahartikel" method="POST">
+                  @csrf
                     <div class="row mb-3">
                         <label for="inputNumber" class="col-sm-2 col-form-label">Masukkan Gambar</label>
                         <div class="col-sm-10">
-                          <input class="form-control" type="file" id="formFile">
+                          <input class="form-control" type="file" name ="Gambar" id="formFile">
                         </div>
                       </div>
                   <div class="row mb-3">
                     <label for="inputEmail" class="col-sm-2 col-form-label">Kategori Artikel</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control">
+                      <input type="text" name ="Kategori" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="inputPassword" class="col-sm-2 col-form-label">Judul Artikel</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control">
+                      <input type="text" name ="Judul" class="form-control">
                     </div>
                   </div>
                   <div class="row mb-3">
                     <label for="inputPassword" class="col-sm-2 col-form-label">Tulis Artikel</label>
                     <div class="col-sm-10">
-                      <textarea class="form-control" style="height: 100px"></textarea>
+                      <textarea class="form-control" name="Isi" style="height: 100px"></textarea>
                     </div>
                   </div>
 

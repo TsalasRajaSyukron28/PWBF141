@@ -24,7 +24,7 @@ class Balita extends Model
 
     public function vitamin()
     {
-        return this->belongsToMany(Vitamin::class, 'balita_vitamin', 'balita_id', 'vitamin_id');
+        return this->hasMany(Vitamin::class);
     }
 
 }

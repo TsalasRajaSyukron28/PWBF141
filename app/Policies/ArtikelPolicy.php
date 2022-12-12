@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Formartikel;
+use App\Models\Artikel;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class FormartikelPolicy
+class ArtikelPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class FormartikelPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Formartikel  $formartikel
+     * @param  \App\Models\Artikel  $artikel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Formartikel $formartikel)
+    public function view(User $user, Artikel $artikel)
     {
         //
     }
@@ -48,10 +48,10 @@ class FormartikelPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Formartikel  $formartikel
+     * @param  \App\Models\Artikel  $artikel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Formartikel $formartikel)
+    public function update(User $user, Artikel $artikel)
     {
         //
     }
@@ -60,10 +60,10 @@ class FormartikelPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Formartikel  $formartikel
+     * @param  \App\Models\Artikel  $artikel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Formartikel $formartikel)
+    public function delete(User $user, Artikel $artikel)
     {
         //
     }
@@ -72,10 +72,10 @@ class FormartikelPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Formartikel  $formartikel
+     * @param  \App\Models\Artikel  $artikel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Formartikel $formartikel)
+    public function restore(User $user, Artikel $artikel)
     {
         //
     }
@@ -84,10 +84,10 @@ class FormartikelPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Formartikel  $formartikel
+     * @param  \App\Models\Artikel  $artikel
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Formartikel $formartikel)
+    public function forceDelete(User $user, Artikel $artikel)
     {
         //
     }

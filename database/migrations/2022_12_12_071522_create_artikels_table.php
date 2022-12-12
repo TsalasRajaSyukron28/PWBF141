@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('formvitamins', function (Blueprint $table) {
+        Schema::create('artikels', function (Blueprint $table) {
             $table->id();
+            $table->String('Gambar');
+            $table->String('Kategori');
+            $table->String('Judul');
+            $table->String('Isi');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('formvitamins');
+        Schema::dropIfExists('artikels');
     }
 };
